@@ -90,6 +90,7 @@ namespace Exercise02
         // This public void will empty the rack of a given flavor.
         public void EmptyCanRackOf(string FlavorOfBinToBeEmptied)
         {
+            Debug.WriteLine("This is a message you need to take out");
             switch (FlavorOfBinToBeEmptied)
             {
                 case Flavor.Regular:
