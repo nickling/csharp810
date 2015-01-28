@@ -14,7 +14,7 @@ namespace Exercise03
 {
     class VendingMachine
     {
-        public const int SODA_COST = 35;
+        public const decimal SODA_COST = 0.35M;
         public static PurchasePrice SODA_PURCHASE_PRICE;
 
         /// <summary>
@@ -25,9 +25,9 @@ namespace Exercise03
         {
             SetSodaCost();
             WelcomeMessage();
-            int deposit;
-            bool isInt = DepositMoney(out deposit);
-            VerifyDeposit(isInt, deposit);
+            decimal deposit;
+            bool isDecimal = DepositMoney(out deposit);
+            VerifyDeposit(isDecimal, deposit);
             DelayTermination();
         }
 
@@ -36,21 +36,21 @@ namespace Exercise03
             Console.WriteLine("Welcome to the .NET C# Soda Vending Machine ");
         }
 
-        public static bool DepositMoney(out int deposit)
+        public static bool DepositMoney(out decimal deposit)
         {
-            Console.Write("Please insert {0} cents: ", SODA_PURCHASE_PRICE.Price);
+            Console.Write("Please insert {0:c} cents: ", SODA_PURCHASE_PRICE.PriceDecimal);
             string deposited = Console.ReadLine();
             Thread.Sleep(1400);
-            bool isInt = Int32.TryParse(deposited, out deposit);
-            Debug.WriteLine("DepositMoney: Check conversion successful: string = {0}, int = {1}", deposited, deposit);
-            return isInt;
+            bool isDecimal = Decimal.TryParse(deposited, out deposit);
+            Debug.WriteLine("DepositMoney: Check conversion successful: string = {0:C}, int = {1:C}", deposited, deposit);
+            return isDecimal;
         }
 
-        public static void VerifyDeposit(bool isInt, int deposit)
+        public static void VerifyDeposit(bool isDecimal, decimal deposit)
         {
-            if (isInt)
+            if (isDecimal)
             {
-                Console.WriteLine("You have inserted {0} cents", deposit);
+                Console.WriteLine("You have inserted {0:C} cents", deposit);
 
                 // Check if enough $ was deposited.
                 DispenseSoda(deposit);
@@ -62,7 +62,7 @@ namespace Exercise03
         }
 
         // Check if there's enough money for a soda
-        public static void DispenseSoda(int deposit)
+        public static void DispenseSoda(decimal deposit)
         {
             Thread.Sleep(1400);
             if (deposit >= SODA_COST)
