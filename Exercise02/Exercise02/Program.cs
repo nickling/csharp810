@@ -16,19 +16,44 @@ namespace Exercise02
     {
         public const int SODA_COST = 35;
         public static PurchasePrice SODA_PURCHASE_PRICE;
+        public static CanRack myCanRack;
+        public static int currDeposit;
+        public static string flavor;
+        public static bool isFlavorAvailable = false;
 
         /// <summary>
-        /// A simple vending machine. You type in how much you want to pay!
+        /// A simple vending machine. 
+        /// You can set the cost of the soda, then 
         /// </summary>
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
+            // Prepare the machine, pricing, welcome message
+            myCanRack = new CanRack();
             SetSodaCost();
             WelcomeMessage();
-            int deposit;
-            bool isInt = DepositMoney(out deposit);
-            VerifyDeposit(isInt, deposit);
+            PickFlavor();
+            DepositMoney();
+            // questions:
+            // Do all the sodas cost the same?
+
+            testIsFullIsEmpty();
+
             DelayTermination();
+        }
+
+        public static void testIsFullIsEmpty()
+        {
+            myCanRack.RemoveACanOf(CanRack.Flavor.Lemon);
+            myCanRack.RemoveACanOf(CanRack.Flavor.Lemon);
+            myCanRack.RemoveACanOf(CanRack.Flavor.Lemon);
+            Debug.Assert(myCanRack.IsEmpty(CanRack.Flavor.Lemon), "Test Failed: LemonRack is not empty.");
+
+            myCanRack.AddACanOf(CanRack.Flavor.Lemon);
+            myCanRack.AddACanOf(CanRack.Flavor.Lemon);
+            myCanRack.AddACanOf(CanRack.Flavor.Lemon);
+            myCanRack.AddACanOf(CanRack.Flavor.Lemon);
+            Debug.Assert(myCanRack.IsFull(CanRack.Flavor.Lemon), "Test Failed: LemonRack is not full.");
         }
 
         public static void WelcomeMessage()
@@ -36,24 +61,27 @@ namespace Exercise02
             Console.WriteLine("Welcome to the .NET C# Soda Vending Machine ");
         }
 
-        public static bool DepositMoney(out int deposit)
+        public static void DepositMoney()
         {
-            Console.Write("Please insert {0} cents: ", SODA_PURCHASE_PRICE.Price);
-            string deposited = Console.ReadLine();
-            Thread.Sleep(1400);
-            bool isInt = Int32.TryParse(deposited, out deposit);
-            Debug.WriteLine("DepositMoney: Check conversion successful: string = {0}, int = {1}", deposited, deposit);
-            return isInt;
+            if (isFlavorAvailable)
+            {
+                Console.Write("Please insert {0} cents: ", SODA_PURCHASE_PRICE.Price);
+                string deposited = Console.ReadLine();
+                Thread.Sleep(1400);
+                bool isInt = Int32.TryParse(deposited, out currDeposit);
+                Debug.WriteLine("DepositMoney: Verify if conversion successful: string = {0}, int = {1}", deposited, currDeposit);
+                VerifyDeposit(isInt);
+            }
         }
 
-        public static void VerifyDeposit(bool isInt, int deposit)
+        public static void VerifyDeposit(bool isInt)
         {
             if (isInt)
             {
-                Console.WriteLine("You have inserted {0} cents", deposit);
+                Console.WriteLine("You have inserted {0} cents", currDeposit);
 
                 // Check if enough $ was deposited.
-                DispenseSoda(deposit);
+                DispenseSoda(currDeposit);
             }
             else
             {
@@ -67,7 +95,8 @@ namespace Exercise02
             Thread.Sleep(1400);
             if (deposit >= SODA_COST)
             {
-                Console.Write("Thanks. Here is your soda.");
+                myCanRack.RemoveACanOf(flavor);
+                Console.Write("Thanks. Here is your {0} soda.", flavor);
                 // and we take your change, lol
             }
             else
@@ -86,6 +115,28 @@ namespace Exercise02
             Console.WriteLine("\r\n\r\n");
             Console.WriteLine("Press enter to terminate...");
             Console.ReadLine();
+        }
+
+        public static void PickFlavor()
+        {
+            Console.Write("Please pick a flavor: Regular, Orange, or Lemon: ");
+            flavor = Console.ReadLine();
+            verifyFlavor();
+        }
+
+        public static void verifyFlavor()
+        {
+            if (flavor.Equals(CanRack.Flavor.Lemon) | flavor.Equals(CanRack.Flavor.Regular) | flavor.Equals(CanRack.Flavor.Orange))
+            {
+                if(!myCanRack.IsEmpty(flavor))
+                {
+                    isFlavorAvailable = true;
+                }                
+            }
+            else
+            {
+                Console.WriteLine("That's not a flavor. Try again");
+            }
         }
     }
 }
