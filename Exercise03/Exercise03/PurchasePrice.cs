@@ -12,46 +12,34 @@ namespace Exercise03
     //  one can of soda.
     class PurchasePrice
     {
-        int price = 0;
-        decimal priceDecimal = 0.0M;
+        // Fields
+        decimal _price = 0.0M;
 
         // This constructor sets the purchase price to zero
         public PurchasePrice()
         {
-            // don't define anything. set to 
+            // do not need to set anything here.
         }
         // This constructor allows a new purchase price to be set by the user
         public PurchasePrice(int initialPrice)
         {
-            Price = initialPrice;
+            Price = (decimal)initialPrice;
         }
 
         public PurchasePrice(decimal initialPrice)
         {
-            PriceDecimal = initialPrice;
+            Price = initialPrice;
         }
-        //  This property gets the value the purchase price.
-        public int Price
+        //  This property gets the value the purchase price. We changed the interface to return a decimal.
+        public decimal Price
         {
             get
             {
-                return price;
+                return _price;
             }
             set
             {
-                price = value;
-            }
-        }
-
-        public decimal PriceDecimal
-        {
-            get
-            {
-                return priceDecimal;
-            }
-            set
-            {
-                priceDecimal = value;
+                _price = value;
             }
         }
     } //end PurchasePrice

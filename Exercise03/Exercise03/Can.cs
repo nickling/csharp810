@@ -17,7 +17,7 @@ namespace Exercise03
 
         public Can()
         {
-            // use _flavor (equals Flavor.REGULAR)
+            // Defaults to _flavor.
         }
 
         // Define a flavor.
