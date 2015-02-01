@@ -1,6 +1,6 @@
-﻿// Exercise 03
+﻿// Exercise 04
 // Author: Nick Ling
-// January 27, 2015
+// January 29, 2015
 
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace Exercise04
 {
     class VendingMachine
     {
-        public const decimal SODA_COST = 0.35M;
+        public const decimal SODA_COST = 35M;
         // public const int SODA_COST = 1; // PurchasePrice can also be created using an int.
         public static PurchasePrice SODA_PURCHASE_PRICE;
         public static CanRack myCanRack;
@@ -30,19 +30,37 @@ namespace Exercise04
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            // Prepare the machine, pricing, welcome message
-            myCanRack = new CanRack();
-            SetSodaCost();
-            WelcomeMessage();
-            PickFlavor();
-            DepositMoney();
+            setup();
+
+
+
+
+            bool keepDispensing = true;
+            while (keepDispensing)
+            {
+                PickFlavor();
+                DepositMoney();
+                keepDispensing = nextPurchase();
+                // BUG: if I keep on dispensing from Lemon, it doesn't run out...
+            }
+
 
             // Tests
-            EmptyACanRackThenRefillIndividually();
-            FillACanRackThenRemoveCans();
+            //EmptyACanRackThenRefillIndividually();
+            //FillACanRackThenRemoveCans();
+            //myCanRack.DisplayCanRack();
 
             // Terminate
             DelayTermination();
+        }
+
+
+        // Prepare the machine, pricing, welcome message
+        public static void setup()
+        {
+            myCanRack = new CanRack();
+            SetSodaCost();
+            WelcomeMessage();
         }
 
         public static void EmptyACanRackThenRefillIndividually()
@@ -66,6 +84,36 @@ namespace Exercise04
             Debug.Assert(!myCanRack.IsFull(testFlavor), "TestFailed: Regular Rack is full");
         }
 
+        public static bool nextPurchase()
+        {
+            bool keepDispensing = false;
+
+            bool validResponse = false;
+            while (!validResponse)
+            {
+                Console.WriteLine();
+                Console.WriteLine("Would you like to purchase another soda? (Y/N)");
+                String response = Console.ReadLine();
+                // take the response and process it.
+                response = response.ToLower().Trim();
+                if (response.StartsWith("y"))
+                {
+                    validResponse = true;
+                    keepDispensing = true;
+                }
+                else if (response.StartsWith("n"))
+                {                    
+                    validResponse = true;
+                    keepDispensing = false;
+                }
+                else
+                {
+                    Console.WriteLine("sorry, I didn't understand that response. ");
+                }
+            }
+            return keepDispensing;
+        }
+
         public static void WelcomeMessage()
         {
             Console.WriteLine("Welcome to the .NET C# Soda Vending Machine ");
@@ -75,7 +123,7 @@ namespace Exercise04
         {
             if (isFlavorAvailable)
             {
-                Console.Write("Please insert {0:c} cents: ", SODA_PURCHASE_PRICE.Price);
+                Console.Write("Please insert {0} cents: ", SODA_PURCHASE_PRICE.PriceDecimal);
                 string deposited = Console.ReadLine();
                 Thread.Sleep(400);
                 bool isDecimal = Decimal.TryParse(deposited, out currDeposit);
@@ -106,12 +154,12 @@ namespace Exercise04
             if (deposit >= SODA_COST)
             {
                 myCanRack.RemoveACanOf(AFlavor);
-                Console.Write("Thanks. Here is your {0} soda.", flavor);
+                Console.WriteLine("Thanks. Here is your {0} soda.", AFlavor);
                 // and we take your change, lol
             }
             else
             {
-                Console.Write("That's not enough for a soda :(");
+                Console.WriteLine("That's not enough for a soda :(");
             }
         }
 
@@ -143,7 +191,12 @@ namespace Exercise04
                 if (AFlavor == Flavor.REGULAR | AFlavor == Flavor.LEMON | AFlavor == Flavor.ORANGE)
                 {
                     Console.WriteLine("flavor is {0}", AFlavor);
-                    if (!myCanRack.IsEmpty(AFlavor))
+                    if (myCanRack.IsEmpty(AFlavor))
+                    {
+                        isFlavorAvailable = false;
+                        Console.WriteLine("Sorry for the inconvenience, we are out of {0}", AFlavor);
+                    }
+                    else
                     {
                         isFlavorAvailable = true;
                     }

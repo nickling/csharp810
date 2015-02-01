@@ -13,7 +13,7 @@ namespace Exercise04
     class PurchasePrice
     {
         // Fields
-        decimal _price = 0.0M;
+        decimal _price = 0M;
 
         // This constructor sets the purchase price to zero
         public PurchasePrice()
@@ -23,15 +23,26 @@ namespace Exercise04
         // This constructor allows a new purchase price to be set by the user
         public PurchasePrice(int initialPrice)
         {
-            Price = (decimal)initialPrice;
+            PriceDecimal = (decimal)initialPrice / 100M;
         }
 
         public PurchasePrice(decimal initialPrice)
         {
-            Price = initialPrice;
+            PriceDecimal = initialPrice;
         }
+
+        //  This property gets and sets the value the purchase price.
+        [Obsolete("Use the decimal version of this property instead", false)]
+        public int Price
+        {
+            get
+            {
+                return (int)(_price * 100);
+            }
+        }
+        
         //  This property gets the value the purchase price. We changed the interface to return a decimal.
-        public decimal Price
+        public decimal PriceDecimal
         {
             get
             {
