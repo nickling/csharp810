@@ -9,7 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-//// control k + c to comment. ctrl ku
+// control kc to comment. ctrl ku to uncomment
+
 namespace Exercise04
 {
     class VendingMachine
@@ -18,10 +19,9 @@ namespace Exercise04
         // public const int SODA_COST = 1; // PurchasePrice can also be created using an int.
         public static PurchasePrice SODA_PURCHASE_PRICE;
         public static CanRack myCanRack;
-        public static decimal currDeposit;
-        public static string flavor;
         public static Flavor AFlavor;
         public static bool isFlavorAvailable = false;
+        private const int DUMMYARGUMENT = 0;
 
         /// <summary>
         /// A simple vending machine. 
@@ -33,7 +33,7 @@ namespace Exercise04
             setup();
 
 
-
+            
 
             bool keepDispensing = true;
             while (keepDispensing)
@@ -41,14 +41,12 @@ namespace Exercise04
                 PickFlavor();
                 DepositMoney();
                 keepDispensing = nextPurchase();
-                // BUG: if I keep on dispensing from Lemon, it doesn't run out...
             }
-
-
-            // Tests
+            
+            // Tests - commented out when not testing
             //EmptyACanRackThenRefillIndividually();
             //FillACanRackThenRemoveCans();
-            //myCanRack.DisplayCanRack();
+            myCanRack.DisplayCanRack();
 
             // Terminate
             DelayTermination();
@@ -92,7 +90,7 @@ namespace Exercise04
             while (!validResponse)
             {
                 Console.WriteLine();
-                Console.WriteLine("Would you like to purchase another soda? (Y/N)");
+                Console.Write("Would you like to purchase another soda? (Y/N)");
                 String response = Console.ReadLine();
                 // take the response and process it.
                 response = response.ToLower().Trim();
@@ -121,37 +119,38 @@ namespace Exercise04
 
         public static void DepositMoney()
         {
+            decimal balance = 0M;
+
             if (isFlavorAvailable)
             {
-                Console.Write("Please insert {0} cents: ", SODA_PURCHASE_PRICE.PriceDecimal);
-                string deposited = Console.ReadLine();
-                Thread.Sleep(400);
-                bool isDecimal = Decimal.TryParse(deposited, out currDeposit);
-                Debug.WriteLine("DepositMoney: Verify if conversion successful: string = {0}, int = {1}", deposited, currDeposit);
-                VerifyDeposit(isDecimal);
-            }
-        }
+                Console.WriteLine("This machine accepts: nickels, dimes, quarters, and halfdollars");
 
-        public static void VerifyDeposit(bool isInt)
-        {
-            if (isInt)
-            {
-                Console.WriteLine("You have inserted {0} cents", currDeposit);
+                bool enoughMoney = false;
+                while (!enoughMoney)
+                {
+                    Console.Write("Please insert {0} cents: ", SODA_PURCHASE_PRICE.PriceDecimal - balance);
+                    string readCoin = Console.ReadLine().ToUpper().Trim();
 
+                    Coin newCoin = new Coin(readCoin);
+                    balance += newCoin.ValueOf;
+                    if (balance >= SODA_PURCHASE_PRICE.PriceDecimal)
+                    {
+                        enoughMoney = true;
+                    }
+                }
+
+                Debug.WriteLine("balance is: {0}", balance, DUMMYARGUMENT);
                 // Check if enough $ was deposited.
-                DispenseSoda(currDeposit);
-            }
-            else
-            {
-                Console.WriteLine("Hey...we only take USD here");
+                Thread.Sleep(400);
+                DispenseSoda(balance);
             }
         }
 
         // Check if there's enough money for a soda
-        public static void DispenseSoda(decimal deposit)
+        public static void DispenseSoda(decimal balance)
         {
             Thread.Sleep(400);
-            if (deposit >= SODA_COST)
+            if (balance >= SODA_COST)
             {
                 myCanRack.RemoveACanOf(AFlavor);
                 Console.WriteLine("Thanks. Here is your {0} soda.", AFlavor);
@@ -190,7 +189,7 @@ namespace Exercise04
                 //if (flavor.Equals(Flavor.LEMON) | flavor.Equals(Flavor.REGULAR) | flavor.Equals(Flavor.ORANGE))
                 if (AFlavor == Flavor.REGULAR | AFlavor == Flavor.LEMON | AFlavor == Flavor.ORANGE)
                 {
-                    Console.WriteLine("flavor is {0}", AFlavor);
+                    // Console.WriteLine("flavor is {0}", AFlavor);
                     if (myCanRack.IsEmpty(AFlavor))
                     {
                         isFlavorAvailable = false;
@@ -209,9 +208,3 @@ namespace Exercise04
         }
     }
 }
-
-
-
-//Console.WriteLine("soda costs {0} cents", SODA.Price);
-//SODA.Price = 40;
-//Console.WriteLine("soda cost was raised by 5 cents. it is now: {0}", SODA.Price);

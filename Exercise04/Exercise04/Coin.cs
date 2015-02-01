@@ -63,7 +63,7 @@ namespace Exercise04
         {
             get
             {
-                return (decimal)coinObject / 100M;
+                return (decimal)coinObject;// / 100M;
             }
         }
 
