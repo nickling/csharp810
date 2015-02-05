@@ -105,27 +105,14 @@ namespace Exercise05
         // false otherwise
         public Boolean IsFull(string FlavorOfBinToBeChecked)
         {
-            Boolean result = false;
-            // convert the string Flavor into the appropriate int value
-            Flavor flavorEnumeral;
-            if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToBeChecked) &&
-                Enum.TryParse<Flavor>(FlavorOfBinToBeChecked, out flavorEnumeral))
-            {
-                Debug.WriteLine("Checking if can rack is full of flavor {0}", FlavorOfBinToBeChecked);
-                result = rack[flavorEnumeral] == BINSIZE;
-            }
-            else
-            {
-                Debug.WriteLine("Error: attempt to check rack status of unknown flavor {0}", FlavorOfBinToBeChecked, DUMMYARGUMENT);
-            }
-            return result;
+            return IsFull(FlavorOps.ToFlavor(FlavorOfBinToBeChecked));
         }
 
         public Boolean IsFull(Flavor FlavorOfBinToBeChecked)
         {
             //return IsFull(FlavorOfBinToBeChecked.ToString().ToLower()); 
             bool result = false;
-            if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToBeChecked))
+            if (rack.ContainsKey(FlavorOfBinToBeChecked))
             {
                 Debug.WriteLine("Checking if can rack is full of flavor {0}", FlavorOfBinToBeChecked);
                 result = rack[FlavorOfBinToBeChecked] == BINSIZE;
@@ -148,7 +135,7 @@ namespace Exercise05
         public Boolean IsEmpty(Flavor FlavorOfBinToBeChecked)
         {
             bool result = false;
-            if (Enum.IsDefined(typeof(Flavor), FlavorOfBinToBeChecked))
+            if (rack.ContainsKey(FlavorOfBinToBeChecked))
             {
                 Debug.WriteLine("Checking if can rack is empty of flavor {0}", FlavorOfBinToBeChecked);
                 result = rack[FlavorOfBinToBeChecked] == EMPTYBIN;
@@ -167,10 +154,9 @@ namespace Exercise05
         {
             Console.WriteLine(".NET C# Vending Machine contents");
             Console.WriteLine("________________________________");
-            foreach (string flavorName in Enum.GetNames(typeof(Flavor)))
+            foreach (Flavor flavorName in FlavorOps.AllFlavors)
             {
-                Flavor flavorEnumeral = (Flavor)Enum.Parse(typeof(Flavor), flavorName);
-                Console.WriteLine("{0}\t{1}", flavorName, rack[flavorEnumeral]);
+                Console.WriteLine("{0}\t{1}", flavorName, rack[flavorName]);
             }
             Console.WriteLine("________________________________");
         }
