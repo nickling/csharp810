@@ -19,6 +19,7 @@ namespace Exercise05
         // public const int SODA_COST = 1; // PurchasePrice can also be created using an int.
         public static PurchasePrice SODA_PURCHASE_PRICE;
         public static CanRack myCanRack;
+        public static CoinBox myCoinBox;
         public static Flavor AFlavor;
         public static bool isFlavorAvailable = false;
         private const int DUMMYARGUMENT = 0;
@@ -44,6 +45,7 @@ namespace Exercise05
             //EmptyACanRackThenRefillIndividually();
             //FillACanRackThenRemoveCans();
             myCanRack.DisplayCanRack();
+            reportCoinBox();
 
             // Terminate
             DelayTermination();
@@ -53,6 +55,7 @@ namespace Exercise05
         // Prepare the machine, pricing, welcome message
         public static void setup()
         {
+            myCoinBox = new CoinBox();
             myCanRack = new CanRack();
             SetSodaCost();
             WelcomeMessage();
@@ -123,12 +126,14 @@ namespace Exercise05
                 Console.WriteLine("This machine accepts: nickels, dimes, quarters, and halfdollars");
 
                 bool enoughMoney = false;
+                Coin newCoin;
                 while (!enoughMoney)
                 {
                     Console.Write("Please insert {0} cents: ", SODA_PURCHASE_PRICE.PriceDecimal - balance);
                     string readCoin = Console.ReadLine().ToUpper().Trim();
 
-                    Coin newCoin = new Coin(readCoin);
+                    newCoin = new Coin(readCoin);
+                    myCoinBox.Deposit(newCoin);
                     balance += newCoin.ValueOf;
                     if (balance >= SODA_PURCHASE_PRICE.PriceDecimal)
                     {
@@ -202,6 +207,20 @@ namespace Exercise05
                     Console.WriteLine("That's not a flavor. Try again");
                 }
             }
+        }
+
+        public static void reportCoinBox()
+        {
+            Console.WriteLine(".NET C# Vending Machine Coin Box");
+            Console.WriteLine("________________________________");
+
+            Console.WriteLine("{0} HALFDOLLARS", myCoinBox.HalfDollarCount);
+            Console.WriteLine("{0} QUARTERS", myCoinBox.QuarterCount);
+            Console.WriteLine("{0} DIMES", myCoinBox.DimeCount);
+            Console.WriteLine("{0} NICKELS", myCoinBox.NickelCount);
+            Console.WriteLine("{0} SLUGS", myCoinBox.SlugCount);
+            Console.WriteLine("Total Value in the Coin Box: {0:c}", myCoinBox.ValueOf());
+            Console.WriteLine("________________________________");
         }
     }
 }
