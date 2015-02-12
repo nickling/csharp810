@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="06.0 Console As Library">
-      <HintPath>..\06.0 Console As Library\06.0 Console As Library\bin\Debug\06.0 Console As Library.exe</HintPath>
+    <Reference Include="06.0 Console As Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>External\06.0 Console As Library.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
