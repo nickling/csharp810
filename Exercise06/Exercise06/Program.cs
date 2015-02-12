@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Nick Ling
+// 02/11/2015
+// Exercise 06 - Windows Form
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +21,7 @@ namespace Exercise06
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
         }
     }
 }

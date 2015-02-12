@@ -127,6 +127,7 @@
             this.buttonNickel.TabIndex = 7;
             this.buttonNickel.Text = "Nickel";
             this.buttonNickel.UseVisualStyleBackColor = true;
+            this.buttonNickel.Click += new System.EventHandler(this.buttonNickel_Click);
             // 
             // buttonDime
             // 
@@ -136,6 +137,7 @@
             this.buttonDime.TabIndex = 8;
             this.buttonDime.Text = "Dime";
             this.buttonDime.UseVisualStyleBackColor = true;
+            this.buttonDime.Click += new System.EventHandler(this.buttonDime_Click);
             // 
             // buttonQuarter
             // 
@@ -145,6 +147,7 @@
             this.buttonQuarter.TabIndex = 9;
             this.buttonQuarter.Text = "Quarter";
             this.buttonQuarter.UseVisualStyleBackColor = true;
+            this.buttonQuarter.Click += new System.EventHandler(this.buttonQuarter_Click);
             // 
             // buttonHalfDollar
             // 
@@ -154,6 +157,7 @@
             this.buttonHalfDollar.TabIndex = 10;
             this.buttonHalfDollar.Text = "Half Dollar";
             this.buttonHalfDollar.UseVisualStyleBackColor = true;
+            this.buttonHalfDollar.Click += new System.EventHandler(this.buttonHalfDollar_Click);
             // 
             // labelInsertCoins
             // 
@@ -173,6 +177,7 @@
             this.buttonReturnMoney.TabIndex = 13;
             this.buttonReturnMoney.Text = "Refund Coins";
             this.buttonReturnMoney.UseVisualStyleBackColor = true;
+            this.buttonReturnMoney.Click += new System.EventHandler(this.buttonReturnMoney_Click);
             // 
             // buttonEjectRegular
             // 
@@ -182,6 +187,7 @@
             this.buttonEjectRegular.TabIndex = 14;
             this.buttonEjectRegular.Text = "Eject Regular";
             this.buttonEjectRegular.UseVisualStyleBackColor = true;
+            this.buttonEjectRegular.Click += new System.EventHandler(this.buttonEjectRegular_Click);
             // 
             // buttonEjectOrange
             // 
@@ -191,6 +197,7 @@
             this.buttonEjectOrange.TabIndex = 15;
             this.buttonEjectOrange.Text = "Eject Orange";
             this.buttonEjectOrange.UseVisualStyleBackColor = true;
+            this.buttonEjectOrange.Click += new System.EventHandler(this.buttonEjectOrange_Click);
             // 
             // buttonEjectLemon
             // 
@@ -200,6 +207,7 @@
             this.buttonEjectLemon.TabIndex = 16;
             this.buttonEjectLemon.Text = "Eject Lemon";
             this.buttonEjectLemon.UseVisualStyleBackColor = true;
+            this.buttonEjectLemon.Click += new System.EventHandler(this.buttonEjectLemon_Click);
             // 
             // labelTotalChange
             // 
