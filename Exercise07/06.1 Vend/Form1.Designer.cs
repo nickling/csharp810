@@ -29,6 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VendingForm));
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("Regular");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Orange");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Lemon");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Half Dollar");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Quarter");
+            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Dime");
+            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Nickel");
+            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("Slug");
+            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("Half Dollar");
+            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Quarter");
+            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Dime");
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Nickel");
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Slug");
             this.tabControlVending = new System.Windows.Forms.TabControl();
             this.tabPageVend = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
@@ -48,11 +61,32 @@
             this.orangeSodaPicBox = new System.Windows.Forms.PictureBox();
             this.regularSodaPicBox = new System.Windows.Forms.PictureBox();
             this.tabPageService = new System.Windows.Forms.TabPage();
+            this.listViewServiceCansRemaining = new System.Windows.Forms.ListView();
+            this.ListView_CanFlavor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ListView_CansRemaining = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox_ServiceCans = new System.Windows.Forms.GroupBox();
+            this.buttonRefillCans = new System.Windows.Forms.Button();
+            this.groupBox_CoinBox = new System.Windows.Forms.GroupBox();
+            this.listView_mainCoinbox = new System.Windows.Forms.ListView();
+            this.main_coins = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.main_qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.main_value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView_InsertedCoinbox = new System.Windows.Forms.ListView();
+            this.inserted_coins = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.inserted_qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.inserted_value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.labelMainCoinBox = new System.Windows.Forms.Label();
+            this.labelInsertedCoinBox = new System.Windows.Forms.Label();
+            this.buttonEmptyMainCoinBox = new System.Windows.Forms.Button();
+            this.buttonEmptyInsertedCoinBox = new System.Windows.Forms.Button();
             this.tabControlVending.SuspendLayout();
             this.tabPageVend.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lemonSodaPicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orangeSodaPicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.regularSodaPicBox)).BeginInit();
+            this.tabPageService.SuspendLayout();
+            this.groupBox_ServiceCans.SuspendLayout();
+            this.groupBox_CoinBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlVending
@@ -254,6 +288,8 @@
             // 
             // tabPageService
             // 
+            this.tabPageService.Controls.Add(this.groupBox_CoinBox);
+            this.tabPageService.Controls.Add(this.groupBox_ServiceCans);
             this.tabPageService.Location = new System.Drawing.Point(4, 22);
             this.tabPageService.Name = "tabPageService";
             this.tabPageService.Padding = new System.Windows.Forms.Padding(3);
@@ -261,6 +297,168 @@
             this.tabPageService.TabIndex = 1;
             this.tabPageService.Text = "Service";
             this.tabPageService.UseVisualStyleBackColor = true;
+            // 
+            // listViewServiceCansRemaining
+            // 
+            this.listViewServiceCansRemaining.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.ListView_CanFlavor,
+            this.ListView_CansRemaining});
+            this.listViewServiceCansRemaining.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem14,
+            listViewItem15,
+            listViewItem16});
+            this.listViewServiceCansRemaining.Location = new System.Drawing.Point(6, 14);
+            this.listViewServiceCansRemaining.Name = "listViewServiceCansRemaining";
+            this.listViewServiceCansRemaining.Size = new System.Drawing.Size(215, 86);
+            this.listViewServiceCansRemaining.TabIndex = 0;
+            this.listViewServiceCansRemaining.UseCompatibleStateImageBehavior = false;
+            this.listViewServiceCansRemaining.View = System.Windows.Forms.View.Details;
+            // 
+            // ListView_CanFlavor
+            // 
+            this.ListView_CanFlavor.Text = "Flavor";
+            this.ListView_CanFlavor.Width = 94;
+            // 
+            // ListView_CansRemaining
+            // 
+            this.ListView_CansRemaining.Tag = "Cans Remaining";
+            this.ListView_CansRemaining.Text = "Cans Remaining";
+            this.ListView_CansRemaining.Width = 110;
+            // 
+            // groupBox_ServiceCans
+            // 
+            this.groupBox_ServiceCans.Controls.Add(this.buttonRefillCans);
+            this.groupBox_ServiceCans.Controls.Add(this.listViewServiceCansRemaining);
+            this.groupBox_ServiceCans.Location = new System.Drawing.Point(19, 242);
+            this.groupBox_ServiceCans.Name = "groupBox_ServiceCans";
+            this.groupBox_ServiceCans.Size = new System.Drawing.Size(244, 151);
+            this.groupBox_ServiceCans.TabIndex = 1;
+            this.groupBox_ServiceCans.TabStop = false;
+            this.groupBox_ServiceCans.Text = "Can Rack";
+            // 
+            // buttonRefillCans
+            // 
+            this.buttonRefillCans.Location = new System.Drawing.Point(6, 106);
+            this.buttonRefillCans.Name = "buttonRefillCans";
+            this.buttonRefillCans.Size = new System.Drawing.Size(215, 23);
+            this.buttonRefillCans.TabIndex = 1;
+            this.buttonRefillCans.Text = "Refill cans";
+            this.buttonRefillCans.UseVisualStyleBackColor = true;
+            // 
+            // groupBox_CoinBox
+            // 
+            this.groupBox_CoinBox.Controls.Add(this.buttonEmptyInsertedCoinBox);
+            this.groupBox_CoinBox.Controls.Add(this.buttonEmptyMainCoinBox);
+            this.groupBox_CoinBox.Controls.Add(this.labelInsertedCoinBox);
+            this.groupBox_CoinBox.Controls.Add(this.labelMainCoinBox);
+            this.groupBox_CoinBox.Controls.Add(this.listView_InsertedCoinbox);
+            this.groupBox_CoinBox.Controls.Add(this.listView_mainCoinbox);
+            this.groupBox_CoinBox.Location = new System.Drawing.Point(19, 28);
+            this.groupBox_CoinBox.Name = "groupBox_CoinBox";
+            this.groupBox_CoinBox.Size = new System.Drawing.Size(410, 197);
+            this.groupBox_CoinBox.TabIndex = 2;
+            this.groupBox_CoinBox.TabStop = false;
+            this.groupBox_CoinBox.Text = "Coin Box";
+            // 
+            // listView_mainCoinbox
+            // 
+            this.listView_mainCoinbox.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.main_coins,
+            this.main_qty,
+            this.main_value});
+            this.listView_mainCoinbox.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20,
+            listViewItem21});
+            this.listView_mainCoinbox.Location = new System.Drawing.Point(11, 43);
+            this.listView_mainCoinbox.Name = "listView_mainCoinbox";
+            this.listView_mainCoinbox.Size = new System.Drawing.Size(186, 110);
+            this.listView_mainCoinbox.TabIndex = 0;
+            this.listView_mainCoinbox.UseCompatibleStateImageBehavior = false;
+            this.listView_mainCoinbox.View = System.Windows.Forms.View.Details;
+            // 
+            // main_coins
+            // 
+            this.main_coins.Text = "Coins";
+            // 
+            // main_qty
+            // 
+            this.main_qty.Text = "Qty";
+            this.main_qty.Width = 62;
+            // 
+            // main_value
+            // 
+            this.main_value.Text = "Value";
+            // 
+            // listView_InsertedCoinbox
+            // 
+            this.listView_InsertedCoinbox.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.inserted_coins,
+            this.inserted_qty,
+            this.inserted_value});
+            this.listView_InsertedCoinbox.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem22,
+            listViewItem23,
+            listViewItem24,
+            listViewItem25,
+            listViewItem26});
+            this.listView_InsertedCoinbox.Location = new System.Drawing.Point(203, 43);
+            this.listView_InsertedCoinbox.Name = "listView_InsertedCoinbox";
+            this.listView_InsertedCoinbox.Size = new System.Drawing.Size(186, 110);
+            this.listView_InsertedCoinbox.TabIndex = 1;
+            this.listView_InsertedCoinbox.UseCompatibleStateImageBehavior = false;
+            this.listView_InsertedCoinbox.View = System.Windows.Forms.View.Details;
+            // 
+            // inserted_coins
+            // 
+            this.inserted_coins.Text = "Coins";
+            // 
+            // inserted_qty
+            // 
+            this.inserted_qty.Text = "Qty";
+            this.inserted_qty.Width = 62;
+            // 
+            // inserted_value
+            // 
+            this.inserted_value.Text = "Value";
+            // 
+            // labelMainCoinBox
+            // 
+            this.labelMainCoinBox.AutoSize = true;
+            this.labelMainCoinBox.Location = new System.Drawing.Point(11, 31);
+            this.labelMainCoinBox.Name = "labelMainCoinBox";
+            this.labelMainCoinBox.Size = new System.Drawing.Size(75, 13);
+            this.labelMainCoinBox.TabIndex = 2;
+            this.labelMainCoinBox.Text = "Main Coin Box";
+            // 
+            // labelInsertedCoinBox
+            // 
+            this.labelInsertedCoinBox.AutoSize = true;
+            this.labelInsertedCoinBox.Location = new System.Drawing.Point(203, 27);
+            this.labelInsertedCoinBox.Name = "labelInsertedCoinBox";
+            this.labelInsertedCoinBox.Size = new System.Drawing.Size(74, 13);
+            this.labelInsertedCoinBox.TabIndex = 3;
+            this.labelInsertedCoinBox.Text = "Inserted Coins";
+            // 
+            // buttonEmptyMainCoinBox
+            // 
+            this.buttonEmptyMainCoinBox.Location = new System.Drawing.Point(14, 159);
+            this.buttonEmptyMainCoinBox.Name = "buttonEmptyMainCoinBox";
+            this.buttonEmptyMainCoinBox.Size = new System.Drawing.Size(183, 23);
+            this.buttonEmptyMainCoinBox.TabIndex = 4;
+            this.buttonEmptyMainCoinBox.Text = "Empty Main Coin Box";
+            this.buttonEmptyMainCoinBox.UseVisualStyleBackColor = true;
+            // 
+            // buttonEmptyInsertedCoinBox
+            // 
+            this.buttonEmptyInsertedCoinBox.Location = new System.Drawing.Point(206, 159);
+            this.buttonEmptyInsertedCoinBox.Name = "buttonEmptyInsertedCoinBox";
+            this.buttonEmptyInsertedCoinBox.Size = new System.Drawing.Size(183, 23);
+            this.buttonEmptyInsertedCoinBox.TabIndex = 5;
+            this.buttonEmptyInsertedCoinBox.Text = "Empty Inserted Coins";
+            this.buttonEmptyInsertedCoinBox.UseVisualStyleBackColor = true;
             // 
             // VendingForm
             // 
@@ -277,6 +475,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.lemonSodaPicBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orangeSodaPicBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.regularSodaPicBox)).EndInit();
+            this.tabPageService.ResumeLayout(false);
+            this.groupBox_ServiceCans.ResumeLayout(false);
+            this.groupBox_CoinBox.ResumeLayout(false);
+            this.groupBox_CoinBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -302,6 +504,24 @@
         private System.Windows.Forms.PictureBox orangeSodaPicBox;
         private System.Windows.Forms.PictureBox regularSodaPicBox;
         private System.Windows.Forms.TabPage tabPageService;
+        private System.Windows.Forms.GroupBox groupBox_ServiceCans;
+        private System.Windows.Forms.Button buttonRefillCans;
+        private System.Windows.Forms.ListView listViewServiceCansRemaining;
+        private System.Windows.Forms.ColumnHeader ListView_CanFlavor;
+        private System.Windows.Forms.ColumnHeader ListView_CansRemaining;
+        private System.Windows.Forms.GroupBox groupBox_CoinBox;
+        private System.Windows.Forms.ListView listView_InsertedCoinbox;
+        private System.Windows.Forms.ColumnHeader inserted_coins;
+        private System.Windows.Forms.ColumnHeader inserted_qty;
+        private System.Windows.Forms.ColumnHeader inserted_value;
+        private System.Windows.Forms.ListView listView_mainCoinbox;
+        private System.Windows.Forms.ColumnHeader main_coins;
+        private System.Windows.Forms.ColumnHeader main_qty;
+        private System.Windows.Forms.ColumnHeader main_value;
+        private System.Windows.Forms.Button buttonEmptyMainCoinBox;
+        private System.Windows.Forms.Label labelInsertedCoinBox;
+        private System.Windows.Forms.Label labelMainCoinBox;
+        private System.Windows.Forms.Button buttonEmptyInsertedCoinBox;
 
     }
 }
