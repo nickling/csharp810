@@ -298,16 +298,16 @@
             this.groupBox_CoinBox.Controls.Add(this.listView_mainCoinbox);
             this.groupBox_CoinBox.Location = new System.Drawing.Point(19, 28);
             this.groupBox_CoinBox.Name = "groupBox_CoinBox";
-            this.groupBox_CoinBox.Size = new System.Drawing.Size(410, 197);
+            this.groupBox_CoinBox.Size = new System.Drawing.Size(570, 235);
             this.groupBox_CoinBox.TabIndex = 2;
             this.groupBox_CoinBox.TabStop = false;
             this.groupBox_CoinBox.Text = "Coin Box";
             // 
             // buttonEmptyInsertedCoinBox
             // 
-            this.buttonEmptyInsertedCoinBox.Location = new System.Drawing.Point(201, 150);
+            this.buttonEmptyInsertedCoinBox.Location = new System.Drawing.Point(337, 206);
             this.buttonEmptyInsertedCoinBox.Name = "buttonEmptyInsertedCoinBox";
-            this.buttonEmptyInsertedCoinBox.Size = new System.Drawing.Size(183, 23);
+            this.buttonEmptyInsertedCoinBox.Size = new System.Drawing.Size(217, 23);
             this.buttonEmptyInsertedCoinBox.TabIndex = 5;
             this.buttonEmptyInsertedCoinBox.Text = "Empty Inserted Coins";
             this.buttonEmptyInsertedCoinBox.UseVisualStyleBackColor = true;
@@ -315,9 +315,9 @@
             // 
             // buttonEmptyMainCoinBox
             // 
-            this.buttonEmptyMainCoinBox.Location = new System.Drawing.Point(9, 150);
+            this.buttonEmptyMainCoinBox.Location = new System.Drawing.Point(9, 206);
             this.buttonEmptyMainCoinBox.Name = "buttonEmptyMainCoinBox";
-            this.buttonEmptyMainCoinBox.Size = new System.Drawing.Size(183, 23);
+            this.buttonEmptyMainCoinBox.Size = new System.Drawing.Size(212, 23);
             this.buttonEmptyMainCoinBox.TabIndex = 4;
             this.buttonEmptyMainCoinBox.Text = "Empty Main Coin Box";
             this.buttonEmptyMainCoinBox.UseVisualStyleBackColor = true;
@@ -326,7 +326,7 @@
             // labelInsertedCoinBox
             // 
             this.labelInsertedCoinBox.AutoSize = true;
-            this.labelInsertedCoinBox.Location = new System.Drawing.Point(198, 18);
+            this.labelInsertedCoinBox.Location = new System.Drawing.Point(334, 16);
             this.labelInsertedCoinBox.Name = "labelInsertedCoinBox";
             this.labelInsertedCoinBox.Size = new System.Drawing.Size(74, 13);
             this.labelInsertedCoinBox.TabIndex = 3;
@@ -347,9 +347,9 @@
             this.inserted_coins,
             this.inserted_qty,
             this.inserted_value});
-            this.listView_InsertedCoinbox.Location = new System.Drawing.Point(198, 34);
+            this.listView_InsertedCoinbox.Location = new System.Drawing.Point(337, 34);
             this.listView_InsertedCoinbox.Name = "listView_InsertedCoinbox";
-            this.listView_InsertedCoinbox.Size = new System.Drawing.Size(186, 110);
+            this.listView_InsertedCoinbox.Size = new System.Drawing.Size(217, 166);
             this.listView_InsertedCoinbox.TabIndex = 1;
             this.listView_InsertedCoinbox.UseCompatibleStateImageBehavior = false;
             this.listView_InsertedCoinbox.View = System.Windows.Forms.View.Details;
@@ -375,7 +375,7 @@
             this.main_value});
             this.listView_mainCoinbox.Location = new System.Drawing.Point(6, 34);
             this.listView_mainCoinbox.Name = "listView_mainCoinbox";
-            this.listView_mainCoinbox.Size = new System.Drawing.Size(186, 110);
+            this.listView_mainCoinbox.Size = new System.Drawing.Size(215, 166);
             this.listView_mainCoinbox.TabIndex = 0;
             this.listView_mainCoinbox.UseCompatibleStateImageBehavior = false;
             this.listView_mainCoinbox.View = System.Windows.Forms.View.Details;
@@ -397,7 +397,7 @@
             // 
             this.groupBox_ServiceCans.Controls.Add(this.buttonRefillCans);
             this.groupBox_ServiceCans.Controls.Add(this.listView_canrack);
-            this.groupBox_ServiceCans.Location = new System.Drawing.Point(19, 242);
+            this.groupBox_ServiceCans.Location = new System.Drawing.Point(19, 269);
             this.groupBox_ServiceCans.Name = "groupBox_ServiceCans";
             this.groupBox_ServiceCans.Size = new System.Drawing.Size(244, 151);
             this.groupBox_ServiceCans.TabIndex = 1;
