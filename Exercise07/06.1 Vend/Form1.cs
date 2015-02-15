@@ -147,5 +147,73 @@ namespace _06._1_Vend
         {
             theRack.DisplayCanRack();
         }
+
+        private void tabControlVending_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            if (tabControlVending.SelectedIndex.Equals(1))
+            {
+                displayCanRackData();
+                displayMainCoinBoxData();
+                displayTempCoinBoxData();
+            }
+        }
+
+        private void displayCanRackData()
+        {
+            listView_canrack.Items.Clear();
+            listView_canrack.Items.Add("Regular").SubItems.Add(theRack[Flavor.REGULAR].ToString());
+            listView_canrack.Items.Add("Orange").SubItems.Add(theRack[Flavor.ORANGE].ToString());
+            listView_canrack.Items.Add("Orange").SubItems.Add(theRack[Flavor.LEMON].ToString());
+        }
+
+        private void displayMainCoinBoxData()
+        {
+            listView_mainCoinbox.Items.Clear();
+            int qty;
+            decimal value;
+            foreach (Coin.Denomination Denom in Coin.AllDenominations)
+            {
+                qty = mainCoinBox.coinCount(Denom);
+                value = Coin.ValueOfCoin(Denom) * qty;
+                string[] coinData = { qty.ToString(), value.ToString() };
+                listView_mainCoinbox.Items.Add(Denom.ToString()).SubItems.AddRange(coinData);
+            }
+        }
+        private void displayTempCoinBoxData()
+        {
+            listView_InsertedCoinbox.Items.Clear();
+            int qty;
+            decimal value;
+            foreach (Coin.Denomination Denom in Coin.AllDenominations)
+            {
+                qty = tempCoinBox.coinCount(Denom);
+                value = Coin.ValueOfCoin(Denom) * qty;
+                string[] coinData = { qty.ToString(), value.ToString() };
+                listView_InsertedCoinbox.Items.Add(Denom.ToString()).SubItems.AddRange(coinData);
+            }
+        }
+
+        private void buttonEmptyMainCoinBox_Click(object sender, EventArgs e)
+        {
+            mainCoinBox.Withdraw(mainCoinBox.ValueOf);
+            displayMainCoinBoxData();
+            ejectButtonsReset();
+        }
+
+        private void buttonEmptyInsertedCoinBox_Click(object sender, EventArgs e)
+        {
+            tempCoinBox.Withdraw(tempCoinBox.ValueOf);
+            displayTempCoinBoxData();
+            totalInsertedDisplayLabel.Text = 
+                string.Format("{0:c}", tempCoinBox.ValueOf);
+            ejectButtonsReset();
+        }
+
+        private void buttonRefillCans_Click(object sender, EventArgs e)
+        {
+            theRack.FillTheCanRack();
+            displayCanRackData();
+            ejectButtonsReset();
+        }
     }
 }
