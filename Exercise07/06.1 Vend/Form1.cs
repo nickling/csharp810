@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Nick Ling
+// Homework 7
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
