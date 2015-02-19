@@ -69,9 +69,7 @@
             this.serviceLockButton = new System.Windows.Forms.Button();
             this.PasswordOKButton = new System.Windows.Forms.Button();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonServiceNotes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.regularSodaPicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orangeSodaPicBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lemonSodaPicBox)).BeginInit();
@@ -80,7 +78,6 @@
             this.ServicePageTab.SuspendLayout();
             this.CoinBoxGroup.SuspendLayout();
             this.CanRackGroupBox.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // regularSodaPicBox
@@ -272,6 +269,7 @@
             // 
             // ServicePageTab
             // 
+            this.ServicePageTab.Controls.Add(this.buttonServiceNotes);
             this.ServicePageTab.Controls.Add(this.CoinBoxGroup);
             this.ServicePageTab.Controls.Add(this.PasswordLabel);
             this.ServicePageTab.Controls.Add(this.CanRackGroupBox);
@@ -479,29 +477,15 @@
             this.PasswordTextBox.UseSystemPasswordChar = true;
             this.PasswordTextBox.VisibleChanged += new System.EventHandler(this.PasswordTextBox_VisibleChanged);
             // 
-            // menuStrip1
+            // buttonServiceNotes
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(705, 24);
-            this.menuStrip1.TabIndex = 16;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
-            this.fileToolStripMenuItem.Text = "&File";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(168, 22);
-            this.toolStripMenuItem1.Text = "toolStripMenuItem1";
+            this.buttonServiceNotes.Location = new System.Drawing.Point(28, 220);
+            this.buttonServiceNotes.Name = "buttonServiceNotes";
+            this.buttonServiceNotes.Size = new System.Drawing.Size(140, 23);
+            this.buttonServiceNotes.TabIndex = 6;
+            this.buttonServiceNotes.Text = "Service Note";
+            this.buttonServiceNotes.UseVisualStyleBackColor = true;
+            this.buttonServiceNotes.Click += new System.EventHandler(this.buttonServiceNotes_Click);
             // 
             // VendingForm
             // 
@@ -510,8 +494,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(705, 485);
             this.Controls.Add(this.VendingTabControl);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "VendingForm";
             this.Text = ".NET C# Vending Machine";
             this.Load += new System.EventHandler(this.VendingForm_Load);
@@ -526,10 +508,7 @@
             this.CoinBoxGroup.ResumeLayout(false);
             this.CoinBoxGroup.PerformLayout();
             this.CanRackGroupBox.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -575,9 +554,7 @@
         private System.Windows.Forms.Button fillTheCanRackButton;
         private System.Windows.Forms.Button emptyInsertedCoinsCoinBoxButton;
         private System.Windows.Forms.Button EmptyMainCoinBoxButton;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.Button buttonServiceNotes;
     }
 }
 

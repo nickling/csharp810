@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Nick Ling
+// Exercise 08
+// 2/18/2015
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -152,6 +157,7 @@ namespace _07._1_Vend_Service
                 // turn the service related controls off
                 CanRackGroupBox.Visible = false;
                 CoinBoxGroup.Visible = false;
+                buttonServiceNotes.Visible = false;
 
                 // turn the password related controls on
                 machineLocked = true;
@@ -169,6 +175,7 @@ namespace _07._1_Vend_Service
                 constructCoinBoxDisplay(CoinBoxListView,mainCoinBox);
                 constructCoinBoxDisplay(InsertedCoinsListView, tempCoinBox);
                 CoinBoxGroup.Visible = true;
+                buttonServiceNotes.Visible = true;
 
                 // turn the password related controls off
                 machineLocked = false;
@@ -257,6 +264,12 @@ namespace _07._1_Vend_Service
         {
             tempCoinBox.Withdraw(tempCoinBox.ValueOf);
             setLockState(machineLocked);
+        }
+
+        private void buttonServiceNotes_Click(object sender, EventArgs e)
+        {
+            ServiceForm serviceF = new ServiceForm();
+            serviceF.Show();
         }
 
     }
