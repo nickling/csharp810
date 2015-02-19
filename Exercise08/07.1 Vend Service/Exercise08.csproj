@@ -36,7 +36,7 @@
   <ItemGroup>
     <Reference Include="06.0 Console As Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Lecture 05 - LINQ and Collections\Exercise 05\06.0 Console As Library\bin\Debug\06.0 Console As Library.exe</HintPath>
+      <HintPath>..\..\Exercise07\06.1 Vend\External\06.0 Console As Library.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
